@@ -1,54 +1,68 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const systemInfo = app.globalData.systemInfo; //系统信息
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+    longitude: '',
+    latitude: '',
+    systemInfo: {
+      windowWidth: 370,
+      windowHeight: 603
+    }, //系统信息
+    controls: [{ //不随地图移动的控件,中心点
+      iconPath: '/images/pin.png',
+      position: {
+        left: (systemInfo.windowWidth / 2) - 11,
+        top: (systemInfo.windowHeight / 2) - 31,
+        width: 22,
+        height: 31
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+    },{ //返回图标
+      id: 1,
+      iconPath: '/images/center.png',
+      position: {
+        left: 20,
+        top: systemInfo.windowHeight - 100,
+        width: 30,
+        height: 30
+      },
+      clickable: true  //控制图标能否点击
+    }]
+  },
+  //点击图标返回
+  controlback(e) {
+    this.mapCtx.moveToLocation();
+  },
+  //分享页面信息
+  onShareAppMessage(){
+    return {
+      title: '萌宠交易平台',
+      path: '/pages/index/index'
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  //页面首次渲染时
+  onReady() {
+    this.mapCtx = wx.createMapContext('map'); //获得地图上下文
+  },
+  //页面显示时
+  onShow(){
+    this.getLocation();
+  },
+  //获取当前位置
+  getLocation() {
+    wx.getLocation({ //调用前需在app.json进行权限配置（permission）
+      type: 'gcj02',
+      success: this.handleGetLocationSucc.bind(this) //bind用于将上下文绑定到handleGetLocationSucc函数
+     })
+  },
+  //获取当前位置的回调函数
+  handleGetLocationSucc(res){
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      longitude: res.longitude,
+      latitude: res.latitude
     })
   }
+  
 })
