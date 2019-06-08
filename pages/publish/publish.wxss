@@ -1,8 +1,12 @@
+page {
+  background-color: #f0f0f0;
+}
 
 .row {
   height: 40px;
   padding: 0 20px;
   border-bottom: 1px solid #f0f0f0;
+  background-color: #fff;
   line-height: 40px;
   overflow: hidden;
   color: #888;
@@ -17,6 +21,7 @@
 .input {
   float: left;
   width: 70%;
+  height: 40px;
   line-height: 40px;
 }
 
@@ -37,3 +42,17 @@ input.input {
   color: #fff;
 }
 
+.success {
+  height: 200px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.success-info {
+  height: 150px;
+  line-height: 150px;
+}
+
+.back-index {
+  color: #0ff;
+}

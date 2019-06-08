@@ -1,11 +1,9 @@
 <!--logs.wxml-->
-<form>
-  <picker mode="region" bindchange="bindRegionChange" value="{{region}}"  class="row">
+<form wx:if="{{!successTipShow}}">
+  <view class="row">
     <view class="label">我的地址</view>
-    <view class="input">
-        {{region[0]}} {{region[1]}} {{region[2]}}
-    </view>
-  </picker>
+    <view bindtap="chooseAddress" class="input" >{{ address }}</view>
+  </view>
   <radio-group class="row" bindchange="radioChange">
     <view class="label">类型</view>
     <view class="input">
@@ -18,15 +16,21 @@
   </radio-group>
   <view class="row">
     <view class="label">说明</view>
-    <input data-type="explain" placeholder="请填写您的具体需求" bindinput="setValue" 
-    class="input" auto-focus/>
+    <input data-type="message" placeholder="请填写您的具体需求" bindinput="setValue" 
+    class="input"/>
   </view>
   <view class="row">
     <view class="label">联系方式</view>
-    <input data-type="phone" type="number" placeholder="请填写您的联系方式" bindinput="setValue" 
-    class="input" auto-focus/>
+    <input data-type="contact" type="number" placeholder="请填写您的联系方式" bindinput="setValue" 
+    class="input"/>
   </view>
   <button size="default" class="publish-btn" bindtap="submit">发布信息</button>
 </form>
-
+<view class="success" wx:else>
+  <view class="success-info">
+    <icon type="success" size="24" />
+    恭喜您，提交成功
+  </view>
+  <view class="back-index" bindtap="backIndex">返回首页</view>
+</view>
 
