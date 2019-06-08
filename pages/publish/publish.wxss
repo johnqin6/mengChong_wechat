@@ -1,0 +1,39 @@
+
+.row {
+  height: 40px;
+  padding: 0 20px;
+  border-bottom: 1px solid #f0f0f0;
+  line-height: 40px;
+  overflow: hidden;
+  color: #888;
+  font-size: 16px;
+}
+
+.label {
+  float: left;
+  width: 30%;
+}
+
+.input {
+  float: left;
+  width: 70%;
+  line-height: 40px;
+}
+
+input.input {
+  height: 40px;
+  line-height: 40px;
+}
+
+.publish-btn {
+  position: relative;
+  left: 50%;
+  transform: translateX(-52%);
+  width: 96%;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
+  background-color: #ff9700;
+  color: #fff;
+}
+

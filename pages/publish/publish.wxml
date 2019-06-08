@@ -1,0 +1,32 @@
+<!--logs.wxml-->
+<form>
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}"  class="row">
+    <view class="label">我的地址</view>
+    <view class="input">
+        {{region[0]}} {{region[1]}} {{region[2]}}
+    </view>
+  </picker>
+  <radio-group class="row" bindchange="radioChange">
+    <view class="label">类型</view>
+    <view class="input">
+      <label wx:for="{{types}}" wx:for-item="type" wx:key="{{index}}">
+        <radio value="{{type.value}}"  
+        checked="{{type.checked}}"/>
+        <text> {{type.name}} </text>
+      </label>
+    </view>
+  </radio-group>
+  <view class="row">
+    <view class="label">说明</view>
+    <input data-type="explain" placeholder="请填写您的具体需求" bindinput="setValue" 
+    class="input" auto-focus/>
+  </view>
+  <view class="row">
+    <view class="label">联系方式</view>
+    <input data-type="phone" type="number" placeholder="请填写您的联系方式" bindinput="setValue" 
+    class="input" auto-focus/>
+  </view>
+  <button size="default" class="publish-btn" bindtap="submit">发布信息</button>
+</form>
+
+

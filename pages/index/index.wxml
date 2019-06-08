@@ -4,6 +4,8 @@
   class="map" bindcontroltap="controlback" show-location></map>
 </view>
 <view class="btns">
-  <view class="btn btn-publish">发布</view>
+  <view class="btn btn-publish">
+    <navigator url="/pages/publish/publish">发布</navigator>
+  </view>
   <view class="btn">搜索</view>
 </view>
