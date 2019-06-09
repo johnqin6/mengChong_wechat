@@ -19,4 +19,7 @@
     * 用到的组件或api: input, 发送请求(wx.request())
 
 ## 效果图
-![首页](./images/home.png)
+![首页](./images/home.png)    
+![发布信息](./images/publish_page.png)  
+![详情](./images/detail.png)   
+![信息搜索](./images/search_page.png)
