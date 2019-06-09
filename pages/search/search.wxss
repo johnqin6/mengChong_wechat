@@ -1,0 +1,47 @@
+page {
+    background-color: #f0f0f0;
+}
+
+.search {
+    padding: 3px 10px;
+    background-color: #03bbd5;
+    overflow: hidden;
+}
+
+.search-input {
+    float: left;
+    width: 80%;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.search-btn {
+    float: left;
+    width: 16%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+.list-item {
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.address-type {
+    color: #ff9700;
+    font-size: 15px;
+}
+
+.address {
+    margin-right: 10px;
+}
+
+.message {
+    font-size: 14px;
+}

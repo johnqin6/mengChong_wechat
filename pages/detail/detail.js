@@ -32,6 +32,14 @@ Page({
       },
       success: res => {
           console.log(res);
+          if(res.data.type === 'error'){
+              wx.showToast({
+                  title: res.data.message,
+                  icon: 'none',
+                  duration: 2000
+              });
+              return ;
+          }
           this.setData({
             address: res.data.data[0].address,
             latitude: res.data.data[0].latitude,

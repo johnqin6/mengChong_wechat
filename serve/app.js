@@ -21,8 +21,18 @@ app.get('/', function (req, res) {
 
 //查询该用户下的交易记录
 app.get('/getTradeData',(req, res) =>{
-    let distinct = req.query.distinct;
-    let tradeData = mongo.find({'distinct': distinct}, (err, data) => {
+    let distinct = req.query.distinct || '';
+    let message = req.query.message || '';
+    let queryObj = {};
+    if(distinct) {
+        queryObj.distinct = distinct;
+    }
+    if(message) {
+        queryObj.message = {
+            $regex: message
+        };
+    }
+    let tradeData = mongo.find(queryObj, (err, data) => {
         if(err) throw err;
         res.send({
             code: 200,
@@ -33,11 +43,20 @@ app.get('/getTradeData',(req, res) =>{
 
 //查询该用户下当前id的交易记录
 app.get('/getTradeDataWitnId',(req, res) =>{
-    let id = req.query.id;
+    let id = req.query.id || '';
+    if(!id) {
+        res.send({
+            code: 200,
+            type: 'error',
+            message: '没有此数据'
+        });
+        return ;
+    }
     let tradeData = mongo.find({'_id': id}, (err, data) => {
         if(err) throw err;
         res.send({
             code: 200,
+            type: 'success',
             data: data
         });
     });

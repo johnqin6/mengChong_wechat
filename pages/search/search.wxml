@@ -1,0 +1,13 @@
+<view class="search">
+    <input class="search-input" placeholder="请输入萌宠" bindinput="setValue"/>
+    <view class="search-btn" bindtap="onSearch">搜索</view>
+</view>
+<view class="list-container">
+    <view class="list-item" wx:for="{{ lists }}" wx:for-item="list" wx:key="{{ index }}" >
+        <view class="address-type" data-id="{{ list._id }}">
+            <text class="address">{{ list.address }}</text>
+            <text class="type">({{ list.type === 1 ? '求购' : '转让'}})</text>
+        </view>
+        <view class="message">{{ list.message }}</view>
+    </view>
+</view>
