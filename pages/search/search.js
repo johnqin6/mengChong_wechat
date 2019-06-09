@@ -6,6 +6,13 @@ Page({
     onShow() {
         this.getTradeData();
     },
+    goDetail(e) {
+        console.log(e);
+        let id = e.currentTarget.id;
+        wx.navigateTo({
+            url: '../detail/detail?id=' + id
+        });
+    },
     //设置搜索值
     setValue(e) {
         this.setData({

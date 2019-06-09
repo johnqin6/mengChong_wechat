@@ -3,8 +3,9 @@
     <view class="search-btn" bindtap="onSearch">搜索</view>
 </view>
 <view class="list-container">
-    <view class="list-item" wx:for="{{ lists }}" wx:for-item="list" wx:key="{{ index }}" >
-        <view class="address-type" data-id="{{ list._id }}">
+    <view class="list-item" wx:for="{{ lists }}" wx:for-item="list" wx:key="{{ index }}" 
+    id="{{ list._id }}" bindtap="goDetail">
+        <view class="address-type" >
             <text class="address">{{ list.address }}</text>
             <text class="type">({{ list.type === 1 ? '求购' : '转让'}})</text>
         </view>
