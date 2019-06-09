@@ -26,3 +26,15 @@
 method: 'post'
 url: 'https//nuanwan.wekeji.cn/student/index.php/wechat/get_user_info',
 header: {'content-type': 'application/x-www-form-urlencoded'}
+
+# node.js + mongodb的接口文档
+
+1. 增加一条交易信息
+接口地址：http://localhost:3000/add
+接口参数：address, latitude, longitude, message, contact, type(1:sell,2:buy), distinct(用户标识) 
+接口类型：POST
+
+2. 获取交易信息
+接口地址：http://localhost:3000/getTradeData
+接口参数：distinct(用户标识) 
+接口类型：get

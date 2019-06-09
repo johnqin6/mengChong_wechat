@@ -1,0 +1,26 @@
+<!--logs.wxml-->
+<form>
+  <view class="row">
+    <view class="label">我的地址</view>
+    <view class="input" >{{ address }}</view>
+  </view>
+  <radio-group class="row">
+    <view class="label">类型</view>
+    <view class="input">
+      <label wx:for="{{types}}" wx:for-item="type" wx:key="{{index}}">
+        <radio value="{{type.value}}"  
+        checked="{{typeVale === type.value}}"/>
+        <text> {{type.name}} </text>
+      </label>
+    </view>
+  </radio-group>
+  <view class="row">
+    <view class="label">说明</view>
+    <input data-type="message" value="{{ message }}" placeholder="请填写您的具体需求" class="input"/>
+  </view>
+  <view class="row">
+    <view class="label">联系方式</view>
+    <input data-type="contact" type="number" value="{{ contact }}" placeholder="请填写您的联系方式" class="input"/>
+  </view>
+</form>
+

@@ -1,5 +1,6 @@
-//logs.js
+//publish.js
 const app = getApp();
+const globalData = app.globalData;
 
 Page({
   data: {
@@ -12,10 +13,16 @@ Page({
     // explain: '',
     // phone: '',
     type: 1,
-    userInfo: null
+    // userInfo: null
   },
   staticData: {
     type: 1,
+  },
+  onShow() {
+    this.setData({
+      userInfo: globalData.userInfo
+    });
+    console.log(globalData.userInfo);
   },
   //选择地区
   chooseAddress() {
@@ -65,15 +72,17 @@ Page({
       return;
     }
     let data = Object.assign({}, this.staticData, {
-      distinct: 'jonhnqin'
+      distinct: 'johnqin',
+      name: this.data.userInfo.nickName
     });
     console.log(data);
-    let apiUrl = 'http://localhost:3000/add';
+    let apiUrl = 'http://localhost:3000/addTrade';
     wx.request({ //发送请求
       url: apiUrl,
+      method: 'post',
       data: data,
       header: {
-          'content-type': 'application/json'
+          'content-type': 'application/x-www-form-urlencoded'
       },
       success: res => {
           if(res.data.code === 200){

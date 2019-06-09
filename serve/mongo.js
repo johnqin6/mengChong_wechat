@@ -21,7 +21,8 @@ const tradeSchema = Schema({
     message: 'String', 
     contact: 'String', 
     type: 'Number', 
-    distinct: 'String'
+    distinct: 'String',
+    name: 'String'
 });
 
 module.exports = mongoose.model('trade', tradeSchema);

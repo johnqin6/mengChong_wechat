@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="map-container">
-  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" controls="{{controls}}" scale="14" 
-  class="map" bindcontroltap="controlback" show-location></map>
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" controls="{{controls}}" scale="16" 
+  class="map" markers="{{markers}}" bindmarkertap="markertap" bindcontroltap="controlback" show-location></map>
 </view>
 <view class="btns">
   <view class="btn btn-publish">
