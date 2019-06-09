@@ -23,3 +23,11 @@
 ![发布信息](./images/publish_page.png)  
 ![详情](./images/detail.png)   
 ![信息搜索](./images/search_page.png)
+
+## 后台接口
+1. 开启mongodb
+2. 进入serve文件夹
+> $ cd ./serve   
+3. 开启node服务器
+> $ node app.js
+
