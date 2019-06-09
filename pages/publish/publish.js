@@ -1,18 +1,22 @@
 //logs.js
-const request = require('../../utils/request');
+const app = getApp();
+
 Page({
   data: {
     address: '点击选择,要勾选哟',
     successTipShow: false,
     types: [
-      {value: 'buy', name: '求购', checked: true},
-      {value: 'sell', name: '转让', checked: false}
+      {value: 1, name: '求购', checked: true},
+      {value: 2, name: '转让', checked: false}
     ],
     // explain: '',
     // phone: '',
-    type: 'buy',
+    type: 1,
+    userInfo: null
   },
-  staticData: {},
+  staticData: {
+    type: 1,
+  },
   //选择地区
   chooseAddress() {
     wx.chooseLocation({
@@ -64,18 +68,26 @@ Page({
       distinct: 'jonhnqin'
     });
     console.log(data);
-    this.setData({
-      successTipShow: true
-    });
-    let apiUrl = 'https://nuanwan.wekeji.cn/student/index.php/trade/add_item';
+    let apiUrl = 'http://localhost:3000/add';
     wx.request({ //发送请求
-      url: 'https://nuanwan.wekeji.cn/student/index.php/trade/add_item',
+      url: apiUrl,
       data: data,
       header: {
-          'content-type': 'application/x-www-form-urlencoded'
+          'content-type': 'application/json'
       },
-      success: function(res) {
-          console.log(res);
+      success: res => {
+          if(res.data.code === 200){
+            wx.showToast({
+              title: res.data.message,
+              icon: 'success',
+              duration: 2000
+            });
+            setTimeout(() => {
+              this.setData({
+                successTipShow: true
+              });
+            },2000);
+          }
       }
     });
   },
